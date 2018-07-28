@@ -9,6 +9,7 @@
         <div style="width:50%; display:inline-table;font-size:12px">
           <div><span>이름 </span><input type="text" v-model="iptName"></div>
           <div><span>주소 </span><input type="text" v-model="iptAddress"></div>
+          <div><span>나이 </span><input type="text" v-model="iptAge"></div>
           <div><button @click="register">등록</button></div>
         </div>
         <div style="width:50%; display:inline-table;">
@@ -37,6 +38,7 @@ export default {
       url: '',
       iptName: '',
       iptAddress: '',
+      iptAge:'',
       hasError: false,
       users: []
     }
@@ -45,7 +47,8 @@ export default {
     async register () {
       const result = await axios.post(this.url + '/users', {
         name: this.iptName,
-        address: this.iptAddress
+        address: this.iptAddress,
+        age: this.iptAge,
       })
       console.log(result)
       if (result.status === 201) {
